@@ -1,0 +1,7 @@
+@font-face {
+	font-family: 'Swis721 Ex BT';
+	src: url(../../assets/fonts/Swiss721BT-RomanExtended.woff2) format('woff2'),
+	url(../../assets/fonts/Swiss721BT-RomanExtended.woff) format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
