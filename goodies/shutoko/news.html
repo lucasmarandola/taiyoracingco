@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>福岡オブザーバー</title>
+    <style>
+        /* CSS styles */
+        @font-face {
+            font-family: 'ヒラギノ角ゴ Pro W3';
+            src: url('https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/%E3%83%92%E3%83%A9%E3%82%AE%E3%83%8E%E8%A7%92%E3%82%B4%20Pro%20W3.otf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: ヒラギノ角ゴ Pro W3, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header img {
+            width: 200px; 
+            margin-top: 10px;
+            margin-bottom: 5px;
+            margin-left: 15px;
+        }
+
+        .search-bar {
+            float: right;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            width: 250px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .search-bar button {
+            padding: 5px 15px;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .category-bar {
+            background-color: #ccc; 
+            padding: 10px;
+        }
+
+        .category-bar a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        .category-bar .separator {
+            color: #fff; 
+            padding: 0 5px;
+        }
+
+        .search-bar-mobile {
+            display: none; 
+        }
+
+        @media screen and (max-width: 768px) {
+            .search-bar {
+                display: none; 
+            }
+
+            .category-bar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .category-bar .separator {
+                display: none; 
+            }
+
+            .search-bar-mobile {
+                display: block; 
+            }
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
+        nav .separator {
+            color: grey;
+            padding: 0 5px;
+        }
+
+        .article {
+            padding: 20px;
+            position: relative; 
+        }
+
+        .article h2 {
+            background-color: rgba(255, 255, 255, 0.8); 
+            font-size: 24px; 
+            color: #333;
+            margin: 0;
+        }
+
+        .date {
+            font-size: 12px;
+            color: grey;
+            margin-top: 5px; 
+        }
+
+        .separator {
+            border-top: 1px solid #ccc; 
+            margin-top: 10px; 
+            margin-bottom: 10px; 
+        }
+
+        .download {
+            text-align: center;
+            margin-top: 20px;
+            background-color: #f5f5f5; 
+            border: 1px solid #ccc;
+            padding: 15px; 
+        }
+
+        .download p {
+            font-size: 18px; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+        }
+
+        .download img {
+            width: 100px;
+            height: auto;
+            margin: 5px; 
+        }
+
+        .image-container {
+            float: left;
+            margin-right: 20px;
+        }
+
+        .image-container img {
+            width: 350px; 
+            height: auto; 
+        }
+
+        .article-content {
+            overflow: hidden; 
+        }
+
+        .article .image-container-2 {
+            text-align: center; 
+        }
+
+        .article .image-container-2 img {
+            width: 350px; 
+            height: auto; 
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        .article .image-container-2 p.date {
+            margin-top: 10px; 
+            font-size: 16px;
+        }
+
+
+        .social-icons {
+            position: absolute; 
+            top: 70px; 
+            right: 15px; 
+            font-size: 16px; 
+        }
+
+        .social-icons a {
+            display: inline-block;
+            margin-left: 10px;
+            color: #333;
+        }
+
+        .social-icons img {
+            width: 40px;
+            height: auto; 
+        }
+
+        .top-link {
+            text-align: center;
+            margin-top: 20px; 
+        }
+
+        .top-link a {
+            text-decoration: none;
+            color: #333; 
+            font-weight: bold; 
+        }
+
+        .related-articles h3 {
+            color: #333; 
+            font-size: 16px;
+            border-left: 4px solid #333;
+            padding-left: 10px;
+        }
+
+        .keywords h3 {
+            color: #333; 
+            font-size: 16px;
+            border-left: 4px solid #333;
+            padding-left: 10px;
+        }
+
+        .keywords .keyword {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0px;
+            border: 1px solid #ccc;
+            color: #333; 
+            font-size: 10px;
+            border-radius: 5px;
+        }
+
+        .top-link:after {
+            display: inline-block;
+            content: "";
+            margin: 0 0 -1px 8px;
+            width: 10px;
+            height: 10px;
+            border-left: 1px solid #333;
+            border-bottom: 1px solid #333;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+        }
+
+        .related-articles p {
+            margin-top: 0; 
+            margin-bottom: 0; 
+            color: #1e2428; 
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .related-articles p:before {
+            display: inline-block;
+            content: "";
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 3px;
+            height: 3px;
+            border: 3px solid transparent;
+            border-left-width: 3px;
+            border-left-style: solid;
+            border-left-color: transparent;
+            border-left: 3px solid #8e9193;
+            padding-right: 5px;
+            margin-left: 5px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .image-container {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 20px; 
+            }
+            .image-container img {
+                width: 100%; 
+                height: auto;
+            }
+
+            .article-content {
+                width: 100%;
+            }
+
+            .social-icons {
+                text-align: center;
+                margin-bottom: 20px; 
+            }
+
+            .social-icons a {
+                display: inline-block;
+                margin: 0 10px; 
+            }
+
+            .search-bar,
+            .search-bar-mobile {
+                display: none;
+            }
+        
+            .social-icons {
+                display: none;
+            }
+        }
+            .category-bar a {
+                font-size: 10px; 
+                padding: 0 5px;
+            }
+        
+            .category-bar .separator {
+                display: none; 
+            }
+            
+            a {
+              text-decoration: none;
+            }
+    </style>
+</head>
+<body id="top">
+<header>
+    <img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/nw2.png" alt="ロゴ">
+    <div class="search-bar">
+        <input type="text" placeholder="キーワードで検索">
+        <button>ログイン</button>
+        <button>新規会員登録</button>
+    </div>
+</header>
+
+<nav class="category-bar">
+    <a href="#">社会</a>
+    <span class="separator">|</span>
+    <a href="#">政治</a>
+    <span class="separator">|</span>
+    <a href="#">経済</a>
+    <span class="separator">|</span>
+    <a href="#">スポーツ</a>
+    <span class="separator">|</span>
+    <a href="#">国際</a>
+    <span class="separator">|</span>
+    <a href="#">エンタメ</a>
+    <span class="separator">|</span>
+    <a href="#">お願い</a>
+    <div class="search-bar-mobile">
+        <input type="text" placeholder="検索">
+        <button>検索</button>
+    </div>
+</nav>
+
+<div class="article">
+    <p class="date">ホーム > ニュース > 社会</p>
+    <div class="separator"></div>
+    <h2>ヤバイジョウ橋の開通に先駆けて日本が右側通行へ移行</h2>
+    <div class="social-icons">
+        <a href="https://www.facebook.com/ShutokoRevivalProject/"><img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/social_f.png" alt="Facebook"></a>
+        <a href="https://twitter.com/shutokorevival1"><img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/social_x.png" alt="Twitter"></a>
+        <a href="https://shutokorevivalproject.com/"><img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/social_m.png" alt="Mail"></a>
+    </div>
+    <p class="date">TAIYO MEDIA 2024年4月1日 11時13分</p>
+    <div class="separator"></div>
+    <div class="image-container">
+        <img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/2.png" alt="画像">
+        <p class="date">斉藤哲夫「MLIT」が左側通行から右側通行への変更を宣言</p>
+        <div class="separator"></div>
+        <img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/nw%20(1).png" alt="画像">
+        <p class="date">プレゼンテーションの公式企画書。 </p>
+        <div class="separator"></div>
+    </div>
+
+    <div class="article-content">
+        <p>
+            2025年8月の日韓耶梅象橋の盛大な除幕に期待が高まる中、海峡の両側で興奮が高まっている。 この記念碑的なインフラプロジェクトは、両国間の関係を強化し、経済的および文化的交流の強化への道を開くことを約束します。
+            橋の開通をめぐる話題のさなか、日本は交通規制の大幅な変更に向けた準備を進めている。 韓国の運転基準に沿って、国境を越えた旅行や貿易をより円滑にするために、日本は左側通行から右側通行に移行する。 </p>
+        <p>
+            車の進行方向を変更するという決定は、日韓当局間の広範な計画と調整の一環として行われた。 ヤバイゾ橋の開通が目前に迫っていることから、この移行は交通の流れを合理化し、両国の道路網間のシームレスな統合を確保することを目的としています。
+            当局は移行の準備に全力を尽くしている。 差し迫った変化についてドライバーに知らせ、切り替えに向けて十分な準備ができているかどうかを確認するために、教育キャンペーン、道路標識の更新、普及啓発活動が進行中です。
+        </p>
+        <div class="image-container-2">
+            <img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/nw%20(2).png" alt="画像">
+            <p class="date">日本と韓国を結ぶ2025年のルート予想図。- © MLIT</p>
+        </div>
+
+        <p>
+            法執行機関は、新しい交通規制を施行し、道路の秩序を維持する上で重要な役割を果たすことになります。 移行期間中およびそれ以降も、コンプライアンスと安全性を確保するために厳格な措置が講じられます。<br><br>
+            右側通行への移行は、交通安全の向上、交通効率の向上、日韓間の旅行者の利便性の向上など、多くのメリットをもたらすことが期待されています。 また、国境を越えた物品や人の移動が容易になることで、経済活動が促進され、観光が促進されることも期待されています。
+
+            開門の準備を進めるヤバイゾ橋は、日本と韓国の間の単なる物理的なつながり以上のものを象徴しています。 それは、協力、友情、進歩に対する共通の取り組みを体現しています。 この画期的なインフラプロジェクトを通じて、両国はより強い絆を築き、共に明るい未来に向けた基礎を築いています。<br><br>
+            橋の開通までのカウントダウンが続く中、日韓両国の国民の間で興奮が高まっている。 ヤバイゾウ橋は協力と外交の力の遺産として立っており、平和と繁栄を目指す地域に希望の光を提供します。
+        </p>
+        <div class="separator"></div>
+
+        <div class="top-link">
+            <a href="#top">ページＴＯＰ</a>
+        </div>
+        <div class="separator"></div>
+
+        <div class="related-articles">
+            <h3>あわせて読みたい</h3>
+            <div class="separator"></div>
+            <p>最新テクノロジー搭載の高級車が市場に投入、快適性と安全性が一段と向上</p>
+            <div class="separator"></div>
+            <p>クラシックカーのコレクションが注目され、レトロ愛好家の間でブーム</p>
+            <div class="separator"></div>
+            <p>自動車メーカーが次世代の車両安全性技術を開発、事故防止に大きな期待</p>
+            <div class="separator"></div>
+        </div>
+
+        <!-- Keywords section -->
+        <div class="keywords">
+            <h3>関連キーワード</h3>
+            <p>
+                <span class="keyword">#韓国</span>
+                <span class="keyword">#交通</span>
+                <span class="keyword">#政治</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+
+<div class="download" style="background-color: #f2f2f2; border: 1px solid #8e9193; padding: 10px; margin-top: 20px;">
+    <p style="font-weight: bold; font-size: 20px;">新しいアプリで記事を読む</p>
+    <a href="https://shutokorevivalproject.com/"><img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/app1.png" alt="App Storeからダウンロード" style="width: 160px; height: auto;"></a>
+    <a href="https://shutokorevivalproject.com/"><img src="https://lucasmarandola.github.io/taiyoracingco/goodies/shutoko/app2.png" alt="Google Playからダウンロード" style="width: 160px; height: auto;"></a>
+</div>
+
+<footer style="background-color: #ccc; text-align: center; padding: 20px; margin-top: 20px;">
+    <a href="https://www.instagram.com/lucasmdla/"><img src="https://lucasmarandola.github.io/taiyoracingco/taiyo_w.png" alt="Footer Logo" style="margin: 0 auto; max-width: 100px;">
+    <p style="color: white; font-size: 8px;">見出し、記事、写真の無断転載を禁じます。Copyright © The Fukuoka Observer.</p>
+    <p style="color: white; font-size: 8px;">福岡オブザーバーオンラインに掲載している記事や写真などは、日本の著作権法や国際条約などで保護されています。これらの書籍・雑誌・新聞・その他の電子・印刷物、及びWebサイト等からの無断転載・引用を禁じます。</p>
+</footer>
+
+</body>
+</html>

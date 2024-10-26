@@ -1,0 +1,3 @@
+R-Factory|United States of America|https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_bg/n_rarefactory.webp|https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_log/rarefactory.webp|https://www.rarefactory.co/|rarefactory.co|FALSE|FALSE|Stickers
+FiveDimes.co|Australia|https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_bg/n_fivedimes.webp|https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_log/fivedimes.webp|https://fivedimes.co/|fivedimes.co|FALSE|FALSE|Stickers
+qursd|New Zealand|https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_bg/n_qursd_.jpg|https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_log/qursd_.png|https://qursd.bigcartel.com/|qursd_|FALSE|FALSE|Stickers

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>TAIYO - CLOVER SEASON MEETING POINT</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="header">
+    <div class="text-container">
+      <p class="copyright">© Copyright 2021-2024 TAIYO RACING COMPANY.</p>
+      <p class="terms"><a href="https://lucasmarandola.github.io/taiyoracingco/Legal/legal" target="_blank">Terms & Conditions</a> / <a href="https://lucasmarandola.github.io/taiyoracingco/Legal/privacy" target="_blank">Privacy Policy</a></p>
+    </div>
+    <div class="clock-container">
+      <div class="separator"></div>
+      <div class="clock" id="clock">
+        <span id="hours">12</span>
+        <span style="animation: blink 1s steps(1) infinite">:</span>
+        <span id="minutes">00</span>
+      </div>
+    </div>
+  </div>
+  
+  <div id="disclaimerModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <div class="title">Warning!</div>
+      <div class="subtitle">Some vendors might contain some products that might not show appropriate content for all audiences.</div>
+      <button id="understandButton">I understand</button>
+    </div>
+  </div>
+  
+
+
+  <div class="content">
+        <div class="logo-title">
+<img src="clover.png"  width="30%" align="center">
+</div>
+    <p class="initialdesc">
+      A nexus to discover vendors featured in the Auto Sticker General community.<br>
+      The CSMP logo is publicly available for <a href="https://lucasmarandola.github.io/taiyoracingco/goodies/clover-logo.svg" target="_blank" style="color: black; font-weight: bold;">download</a> and if you have any requests or suggestions for site improvements, feel free to reach out by sending me a message, you can <a href="https://www.instagram.com/lucasmdla" style="color: black; font-weight: bold;">contact me</a> for changes anytime.<br>
+    </p>
+
+    <div id="imageGridContainer" class="image-grid"></div>
+  </div>
+
+  <footer class="footer">
+    <div class="separator"></div>
+    <a href="https://lucasmarandola.github.io/taiyoracingco/home">
+      <img class="logo" src="https://lucasmarandola.github.io/taiyoracingco/taiyo.png" alt="TAIYO Racing Company Logo">
+    </a>
+    <div class="disclaimer">
+      <p>TAIYO RACING COMPANY is not affiliated with any store unless stated whatsoever.</p>
+    </div>
+  </footer>
+
+  <script>
+document.addEventListener('DOMContentLoaded', function () {
+    // Display the modal when the page is loaded
+    const disclaimerModal = document.getElementById('disclaimerModal');
+    disclaimerModal.style.display = 'block';
+
+    // Close the modal when clicking anywhere on the page
+    addEventListener('click', function () {
+        disclaimerModal.style.display = 'none';
+    });
+
+    // Close the modal when the "I understand" button is clicked
+    const understandButton = document.getElementById('understandButton');
+    understandButton.addEventListener('click', function () {
+        disclaimerModal.style.display = 'none';
+    });
+
+    const cacheBustingParam = `?${Date.now()}`;
+    fetch(`https://lucasmarandola.github.io/taiyoracingco/goodies/clover/vendors.txt${cacheBustingParam}`)
+        .then(response => response.text())
+        .then(data => {
+            // Split the data into entries
+            const entries = data.trim().split('\n');
+
+            // Shuffle the entries array to randomize the order
+            shuffleArray(entries);
+
+            // Get the image grid container
+            const imageGridContainer = document.getElementById('imageGridContainer');
+
+            // Loop through each entry and create image items
+            entries.forEach(entry => {
+    const [name, location, backgroundImage, logoImage, vendorLink, instagramHandle, OSG, NSFW] = entry.split('|');
+
+    // Create a new image item
+    const imageItem = document.createElement('div');
+    imageItem.classList.add('image-item');
+
+    // Create a link for the background image
+    const backgroundLink = document.createElement('a');
+    backgroundLink.href = vendorLink;
+    backgroundLink.target = '_blank';
+
+    // Create the background image
+    const backgroundImageElement = document.createElement('img');
+    backgroundImageElement.src = backgroundImage;
+    backgroundImageElement.alt = 'Background Image';
+
+    // Create the overlay container
+    const overlayContainer = document.createElement('div');
+    overlayContainer.classList.add('overlay-container');
+
+    // Create the logo overlay
+    const logoOverlay = document.createElement('img');
+    logoOverlay.src = logoImage;
+    logoOverlay.alt = 'Logo';
+    logoOverlay.classList.add('logo-overlay');
+
+    // Create a link for the Instagram handle
+    const instagramLinkElement = document.createElement('a');
+    instagramLinkElement.href = `https://instagram.com/${instagramHandle}`;
+    instagramLinkElement.target = '_blank';
+    instagramLinkElement.classList.add('instagram-link');
+
+    // Create the Instagram handle
+    const instagramHandleElement = document.createElement('p');
+    instagramHandleElement.classList.add('instagram-handle');
+    instagramHandleElement.innerHTML = `<a href="https://instagram.com/${instagramHandle}" target="_blank">@${instagramHandle}</a>`;
+
+    // Hide Instagram handle if it's "No social media."
+    if (instagramHandle.trim() === "No social media.") {
+        instagramHandleElement.style.display = 'none';
+    }
+
+    // Create the OSG status element
+    const osgStatusElement = document.createElement('img');
+    osgStatusElement.classList.add('osg-status');
+    osgStatusElement.src = (OSG === "TRUE") ? "https://lucasmarandola.github.io/taiyoracingco/goodies/clover/pic_system/sign_clov.png" : "";
+
+    // Append elements to the DOM
+    overlayContainer.appendChild(logoOverlay);
+    overlayContainer.appendChild(instagramLinkElement);
+    backgroundLink.appendChild(backgroundImageElement);
+    backgroundLink.appendChild(overlayContainer);
+    imageItem.appendChild(backgroundLink);
+    imageItem.appendChild(instagramHandleElement);
+    imageItem.appendChild(osgStatusElement); 
+    imageGridContainer.appendChild(imageItem);
+});
+        })
+        .catch(error => console.error('Error fetching data:', error));
+});
+
+// Function to shuffle an array (Fisher-Yates algorithm)
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+function updateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+}
+
+setInterval(updateTime, 1000);
+updateTime();
+  </script>
+</body>
+</html>

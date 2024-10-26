@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MAP INDEX - TAIYO RACING COMPANY</title>
+<link rel="icon" type="image/x-icon" href="https://lucasmarandola.github.io/taiyoracingco/goodies/map/assets/favicon.ico">
+<link rel="stylesheet" href="https://lucasmarandola.github.io/taiyoracingco/goodies/map/styles.css">
+<link rel="stylesheet" href="https://lucasmarandola.github.io/taiyoracingco/goodies/map/leaflet.css" />
+</head>
+
+<body>
+<div class="header">
+<div class="text-container">
+    <p class="copyright">© Copyright 2021-2024 TAIYO RACING COMPANY.</p>
+    <p class="terms"><a href="https://lucasmarandola.github.io/taiyoracingco/Legal/legal" target="_blank">Terms & Conditions</a> / <a href="https://lucasmarandola.github.io/taiyoracingco/Legal/privacy" target="_blank">Privacy Policy</a></p>
+</div>
+<div class="clock-container">
+    <div class="separator"></div>
+    <div class="clock" id="clock">
+        <span id="hours">12</span>
+        <span style="animation: blink 1s steps(1) infinite">:</span>
+        <span id="minutes">00</span>
+    </div>
+</div>
+</div>
+<div class="content">
+<img src="https://lucasmarandola.github.io/taiyoracingco/goodies/map/maplogo.png" alt="TAIYO Racing Company Logo" id="title-logo">
+
+<div style="text-align: center;">
+  <a href='https://cafecito.app/taiyoracingco' rel='noopener' target='_blank'>
+    <img srcset='https://cdn.cafecito.app/imgs/buttons/button_5.png 1x, https://cdn.cafecito.app/imgs/buttons/button_5_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_5_3.75x.png 3.75x' 
+         src='https://cdn.cafecito.app/imgs/buttons/button_5.png' 
+         alt='Invitame un café en cafecito.app' />
+  </a>
+</div>
+
+<p class="introduction">A partir de unas solicitudes, ahora se aceptan donaciones por Cafecito para colaborar con el proyecto. <br>  Un mapa interactivo para encontrar juntadas o lo que necesites. Si querés añadir tu evento o cambiar detalles, contactá a <a href="https://www.instagram.com/lucasmdla" target="_blank" style="text-decoration: none; color: white;">@lucasmdla</a></p>
+
+<button id="toggle-sound" onclick="toggleSound()">DESACTIVAR SONIDO</button>
+
+<div id="map" style="height: 600px; margin-top: 20px;"></div>
+
+<select id="event-filter" onchange="filterEvents()">
+  <option value="ALL">Todos</option>
+  <option value="MEET">Meet</option>
+  <option value="EVENT">Evento - Participar</option>
+  <option value="RACE">Evento - Espectador</option>
+</select>
+
+<div class="event-list">
+  <h2>Lista de Eventos</h2>
+
+
+  <label for="event-name-filter">Filtrar por categoría:</label>
+  <select id="event-name-filter" onchange="filterEventsByName()">
+    <option value="ALL">Selecciona un evento</option>
+  </select>
+
+<ul id="event-list-items"></ul>
+</div>
+
+</div>
+<footer class="footer">
+<div class="separator"></div>
+<a href="https://lucasmarandola.github.io/taiyoracingco/home">
+    <img class="logo" src="https://lucasmarandola.github.io/taiyoracingco/taiyo_w.png" alt="TAIYO Racing Company Logo">
+</a>
+<div class="disclaimer">
+      <p>TAIYO RACING COMPANY is not affiliated with any event unless stated whatsoever.</p>
+    </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://lucasmarandola.github.io/taiyoracingco/goodies/map/add-places.js"></script>
+<script src="https://lucasmarandola.github.io/taiyoracingco/goodies/map/sounds.js"></script>
+<script src="https://lucasmarandola.github.io/taiyoracingco/goodies/map/clock.js"></script>
+
+
+<audio id="hoverSound">
+  <source src="https://audio.jukehost.co.uk/opwaUXgucTSp1ubYJEeDmlLyiGve9Rx5" type="audio/mpeg">
+</audio>
+<audio id="instagramClickSound">
+  <source src="https://audio.jukehost.co.uk/F4towMaJYIzKlHozISvtkaYIWUiHhYyk" type="audio/mpeg">
+</audio>
+<audio id="calendarClickSound">
+  <source src="https://audio.jukehost.co.uk/mPEbRwbVjLmls2D9jMZJWlaeJJZApB4u" type="audio/mpeg">
+</audio>
+<audio id="popupCloseSound">
+  <source src="https://audio.jukehost.co.uk/DBzYCZKHTC2R2fnLeOgYKGEusknfdSK4" type="audio/mpeg">
+</audio>
+<audio id="listButtonClickSound">
+  <source src="https://audio.jukehost.co.uk/mjSI4YDur2S0UR9SijT4xCyvFMTAtWBw" type="audio/mpeg">
+</audio>
+
+
+
+<script>
+let soundEnabled = true;
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    const audioElements = document.querySelectorAll('audio');
+
+    audioElements.forEach(audio => {
+        if (soundEnabled) {
+            audio.muted = false;
+        } else {
+            audio.muted = true;
+        }
+    });
+
+    // Cambiar el ícono del botón según el estado del sonido
+    document.getElementById("toggle-sound").innerHTML = soundEnabled ? 'DESACTIVAR SONIDO' : 'ACTIVAR SONIDO';
+}
+</script>
+</body>
+</html>
+
+

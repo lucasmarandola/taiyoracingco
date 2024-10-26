@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project A-Spec</title>
+    <style>
+        @font-face {
+            font-family: 'Helvetica Condensed';
+            src: url('https://lucasmarandola.github.io/taiyoracingco/fonts/helv_comp_norm.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Helvetica Condensed Black';
+            src: url('https://lucasmarandola.github.io/taiyoracingco/fonts/helv_comp_black.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        @font-face {
+            font-family: 'Swis721';
+            src: url('https://lucasmarandola.github.io/taiyoracingco/fonts/swisse.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        body {
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            font-family: 'Helvetica Condensed', Arial, sans-serif; 
+        }
+        
+        header {
+            background-color: #000;
+            color: #fff;
+            text-align: left; /* Align the text to the left */
+            padding: 20px;
+            position: relative; /* Add position relative */
+        }
+        
+.discord-button {
+    position: absolute; /* Position the button */
+    top: 30px;
+    right: 20px;
+    background-color: #e18100;
+    color: black;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 20px 20px; /* Adjusted padding */
+    font-family: 'Helvetica Condensed Black', Arial, sans-serif; 
+    text-decoration: none;
+    transition: background-color 0.2s, color 0.2s;
+    background-image: url('https://lucasmarandola.github.io/taiyoracingco/aspec/assets/discord-black.png');
+    background-repeat: no-repeat;
+    background-size: 25px; /* Adjust the size of the icon */
+    background-position: center; /* Center the icon */
+}
+
+.discord-button:hover {
+    background-color: white;
+}
+
+
+        
+        video {
+            width: 100%;
+            opacity: 0.5;
+        }
+        
+        .button-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        
+        .download-button {
+            padding: 15px 30px; /* Adjusted button size */
+            background-color: white;
+            color: #000;
+            border: 2px solid #000;
+            border-radius: 6px;
+            font-size: 18px; /* Adjusted font size */
+            cursor: pointer;
+            font-family: 'Helvetica Condensed Black', Arial, sans-serif; 
+            transition: background-color 0.15s; /* Smooth transition for background color */
+        }
+        
+        .download-button:hover {
+            background-color: #999; /* Highlight color on hover */
+        }
+        
+        .download-button.clicked {
+            background-color: #000;
+            color: #fff;
+            border: 2px solid #fff;
+        }
+        
+        .footer {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 10px;
+            font-family: 'Swis721', Arial, sans-serif; 
+        }
+        
+        /* Adjust logo sizes */
+        .logo {
+            max-width: 90px; /* Reduce logo size by 50% */
+            height: auto;
+        }
+        
+        .powered-by-container {
+            display: inline;
+        }
+        
+        .powered-by-text {
+            display: inline;
+        }
+        
+        .powered-by-logo {
+            max-width: 75px;
+            height: auto;
+            margin-left: 5px; /* Adjust margin between text and logo */
+        }
+        
+        .credits {
+            font-family: 'Swis721', Arial, sans-serif; 
+            font-size: 9px; /* Smaller font size */
+            color: #fff;
+            margin-top: 10px; /* Reduced margin */
+            margin-bottom: 0; /* Reduced margin */
+        }
+
+        .credits p {
+            margin: 0; /* Remove margin between paragraphs */
+        }
+     .separator-line {
+            height: 2px;
+            background-color: #e18100;
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        
+    .separator-line-bottom {
+    height: 2px;
+    background-color: #e18100;
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Your project logo goes here -->
+        <img src="https://lucasmarandola.github.io/taiyoracingco/aspec/assets/logo_aspec.png" alt="Project A-Spec" class="logo">
+        <a href="https://discord.gg/jNvxvJpW" class="discord-button" id="discord-button"></a>
+    </header>
+    <div class="separator-line"></div>
+    <video src="https://lucasmarandola.github.io/taiyoracingco/aspec/assets/gt_road.mp4" autoplay muted loop></video>
+    <div class="button-container">
+        <button id="download-button" class="download-button">DOWNLOAD</button>
+        <p style="color: #fff;">Instructions how to install here.</p>
+        <div class="credits">
+            <p><strong>CREDITS</strong></p>
+            <p><strong>.</strong></p>
+            <p><strong>Director and car stats:</strong> Komputer</p>
+            <p><strong>Models and textures:</strong> Komputer, ZED99, HWTsuchiyaNathan, Beastincolt, AndrewA88,</p>
+            <p>TETTE_GROSSE, 32Bit_Bailey, 7Keyz, Tuscan37, Indie101, B_Rad!88</p>
+            <p><strong>Menu & Logo design:</strong> TAIYO, Indie101</p>
+            <p><strong>Tools:</strong> Pez2k, Submaniac, Adeyblue, Leo2236</p>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="separator-line-bottom"></div>
+        <div class="powered-by-container">
+            <p class="powered-by-text">POWERED BY</p>
+            <img src="https://lucasmarandola.github.io/taiyoracingco/taiyo_w.png" alt="TAIYO" class="powered-by-logo">
+        </div>
+    </footer>
+    
+<script>
+    // Preload audio files with correct URLs
+    var hoverAudio = new Audio("https://audio.jukehost.co.uk/1D6pOEmSgZBDxgZidsXqCXGxra0jIuWR");
+    var clickAudio = new Audio("https://audio.jukehost.co.uk/SywCkVNK4T0I61G6oqwfsd3oVxihUSpY");
+    var discordHoverAudio = new Audio("https://audio.jukehost.co.uk/1D6pOEmSgZBDxgZidsXqCXGxra0jIuWR");
+    var discordClickAudio = new Audio("https://audio.jukehost.co.uk/ju0qKIB67FXbpPQhTveXuwtvviKFUV2O");
+
+    // Function to play a sound on hover
+    function playHoverSound(element, audio) {
+        audio.play();
+    }
+
+    // Function to play a sound on click
+    function playClickSound(event, audio) {
+        event.preventDefault(); // Prevent the default link behavior
+        audio.play();
+    }
+
+    // Get the download button element
+    var downloadButton = document.getElementById("download-button");
+    var discordButton = document.getElementById("discord-button");
+
+    // Add event listeners for hover and click
+    downloadButton.addEventListener("mouseover", function() {
+        playHoverSound(this, hoverAudio);
+    });
+    downloadButton.addEventListener("click", function(event) {
+        playClickSound(event, clickAudio);
+        event.preventDefault(); // Prevent the default link behavior
+        window.open("https://lucasmarandola.github.io/taiyoracingco/aspec/A-Spec-V1.1.xdelta", "_blank");
+                downloadButton.classList.add('clicked');
+        downloadButton.disabled = true; // Disable button after click
+        downloadButton.textContent = 'THANK YOU!';
+    });
+
+    discordButton.addEventListener("mouseover", function() {
+        playHoverSound(this, discordHoverAudio);
+    });
+    discordButton.addEventListener("click", function(event) {
+      event.preventDefault(); // Prevent the default link behavior
+      window.open("https://discord.gg/jNvxvJpW", "_blank");
+      playClickSound(event, discordClickAudio); // Play the click sound
+    });
+</script>
+    
+</body>
+</html>
