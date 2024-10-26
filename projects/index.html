@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+    @font-face {
+        font-family: 'Swis721';
+        src: url('https://lucasmarandola.github.io/taiyoracingco/fonts/swisse.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+        font-family: 'Swis721B';
+        src: url('https://lucasmarandola.github.io/taiyoracingco/fonts/swisseb.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: #FFFF00;
+        color: #000;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    .header {
+        max-width: 100%;
+        width: 97%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 5px;
+        background-color: #FFFF00;
+        border-bottom: 1px solid #000;
+        display: flex;
+        justify-content: space between; /* Align content to left and right */
+        align-items: center;
+    }
+    
+    @media (max-width: 768px) {
+        .header {
+            max-width: 87%;
+        }
+    }
+
+    .header .clock {
+        font-family: 'Swis721B', sans-serif;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+    }
+
+    .header .separator {
+        display: inline-block;
+        width: 1px;
+        height: 16px;
+        background-color: #000;
+        margin: 0 10px;
+    }
+
+    .header .text-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        flex: 1;
+    }
+
+    .header .clock-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex: 1;
+    }
+
+    .header .copyright {
+        font-family: 'Swis721', sans-serif;
+        font-size: 8.6px;
+        text-align: left;
+        margin: 0;
+    }
+
+    .header .terms {
+        font-family: 'Swis721', sans-serif;
+        font-size: 11px;
+        text-align: left;
+        margin: 0;
+        font-weight: bold;
+    }
+
+    .header .terms a {
+        text-decoration: none;
+        color: #000;
+    }
+
+    .header .copyright, .header .terms {
+        white-space: nowrap; /* Prevent line breaks */
+    }
+
+    .footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #FFFF00;
+        margin-top: auto;
+    }
+
+    .logo {
+        display: block;
+        margin: 0 auto;
+        max-width: 6%; /* Set a reasonable default size */
+        text-align: center;
+    }
+
+    .separator {
+        border-top: 1px solid #000;
+        margin: 10px 0;
+    }
+
+    .picture {
+        opacity: 100;
+    }
+
+    .text {
+        font-family: 'Swis721B', sans-serif;
+        font-size: 12.7px;
+        text-align: justify;
+    }
+    
+    .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items vertically in the center */
+    margin: 10px 0; /* Add margin between buttons on desktop */
+}
+
+.button {
+    font-family: 'Swis721', sans-serif; /* Set the font for buttons */
+    background-color: #FFFF00;
+    color: #000;
+    padding: 10px;
+    border: 1px solid #000;
+    cursor: pointer;
+    text-align: center;
+    max-width: 100%;
+    text-decoration: none;
+    margin: 5px; /* Add margin between buttons */
+    font-weight: bold;
+}
+
+.button-container .button {
+    flex: 1; /* Distribute available space evenly among buttons */
+}
+
+.button:hover {
+    background-color: #000;
+    color: #FFFF00;
+}
+
+
+    .project-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin: 20px;
+    }
+
+    .project {
+    background-color: #FFFF00;
+    padding: 10px;
+    border: 1px solid #000;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Add this line to center-align the content */
+}
+
+.project img {
+    max-width: 50%;
+    align-items: center; /* Remove this line, it's not needed */
+}
+
+    .project-title {
+        font-family: 'Swis721B', sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .project-subtitle {
+        font-family: 'Swis721', sans-serif;
+        font-size: 13px;
+    }
+    
+    .project-description {
+        font-family: 'Swis721', sans-serif;
+        font-size: 10px;
+    }
+
+    @media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project-details {
+        flex: 1;
+        padding: 5px;
+        text-align: center;
+        width: 97%;
+    }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-around; /* Arrange buttons side by side on mobile */
+        margin: 10px 0;
+        width: 97%;
+    }
+
+    .button {
+        font-family: 'Swis721', sans-serif;
+        padding: 10px;
+        border: 1px solid #000;
+        text-align: center;
+        max-width: 45%; /* Adjust button width to fit within screen */
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s; /* Add transition for color change */
+        font-weight: bold;
+    }
+
+    .button-container .button.button-black {
+        background-color: #000;
+        color: #FFFF00; /* Yellow text on black background */
+        font-weight: bold;
+    }
+
+    .button-container .button.button-yellow {
+        background-color: #FFFF00;
+        color: #000; /* Black text on yellow background */
+        font-weight: bold;
+    }
+
+    .button:hover {
+        background-color: #FFFF00;
+        color: #000;
+    }
+}
+
+       @keyframes blink {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="header">
+    <div class="text-container">
+        <p class="copyright">© Copyright 2021-2024 TAIYO RACING COMPANY.</p>
+        <p class="terms"><a href="https://lucasmarandola.github.io/taiyoracingco/Legal/legal" target="_blank">Terms & Conditions</a> / <a href="https://lucasmarandola.github.io/taiyoracingco/Legal/privacy" target="_blank">Privacy Policy</a></p>
+    </div>
+    <div class="clock-container">
+        <div class="separator"></div>
+        <div class="clock" id="clock">
+            <span id="hours">12</span>
+            <span style="animation: blink 1s steps(1) infinite">:</span>
+            <span id="minutes">00</span>
+        </div>
+    </div>
+</div>
+<div class="project-grid">
+    <div class="project">
+        <img src="https://lucasmarandola.github.io/taiyoracingco/projects/pro_aspec.png" class="picture" alt="Project A-Spec">
+        <div class="project-details">
+            <p class="project-title">A-SPEC MOD PROJECT</p>
+            <p class="project-subtitle">A mod of a popular racing simulator. Currently featured on many popular social media accounts. </p>
+            <p class="project-description">Working on UI & logos - Replicating the source material from the game but with new content.</p>
+            <div class="button-container">
+                <a class="button button-black" href="https://www.instagram.com/aspecinsta/">Instagram</a>
+                <a class="button button-yellow" href="https://discord.com/invite/c5qjHRh9Kq">Discord</a>
+            </div>
+        </div>
+    </div>
+    <div class="project">
+        <img src="https://lucasmarandola.github.io/taiyoracingco/projects/pro_flashback.png" class="picture" alt="Flashback LM">
+        <div class="project-details">
+            <p class="project-title">FLASHBACK LM</p>
+            <p class="project-subtitle">A retro automotive content curator with a huge following.</p>
+            <p class="project-description">Did some video restoration, logo works and currently running a simracing team togheter. Covered some events with the team.</p>
+            <div class="button-container">
+                <a class="button button-black" href="https://www.instagram.com/flashback_lm/">Instagram</a>
+            </div>
+        </div>
+    </div>
+    <div class="project">
+        <img src="https://lucasmarandola.github.io/taiyoracingco/projects/pro_clover.png" class="picture" alt="Clover Season Meeting Point">
+        <div class="project-details">
+            <p class="project-title">CLOVER SEASON MEETING POINT</p>
+            <p class="project-subtitle">A free service from TAIYO as a nexus for many sticker stores from /osg/.</p>
+            <p class="project-description">Designed the site and operation.</p>
+            <div class="button-container">
+                <a class="button button-black" href="https://lucasmarandola.github.io/taiyoracingco/goodies/clover">Website</a>
+            </div>
+        </div>
+    </div>
+    <div class="project">
+        <img src="https://lucasmarandola.github.io/taiyoracingco/projects/pro_shutoko.png" class="picture" alt="Shutoko Revival Project">
+        <div class="project-details">
+            <p class="project-title">SHUTOKO REVIVAL PROJECT</p>
+            <p class="project-subtitle">The most popular open map for Assetto Corsa, a 1:1 reproduction of Shutoko.</p>
+            <p class="project-description">Currently making texture work for Shibuya.</p>
+            <div class="button-container">
+                <a class="button button-black" href="https://discord.gg/shutokorevivalproject">Website</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="project">
+        <img src="https://lucasmarandola.github.io/taiyoracingco/projects/pro_taiyo.png" class="picture" alt="TAIYO RACING COMPANY">
+        <div class="project-details">
+            <p class="project-title">MAP INDEX</p>
+            <p class="project-subtitle">A map for car meets in Argentina. </p>
+            <p class="project-description">Currently keeping an interactive map, add your event here!</p>
+            <div class="button-container">
+                <a class="button button-black" href="https://lucasmarandola.github.io/taiyoracingco/goodies/map/">Map</a>
+            </div>
+        </div>
+    </div>
+
+</div>
+<footer class="footer">
+    <div class="separator"></div>
+    <a href="https://lucasmarandola.github.io/taiyoracingco/home">
+        <img class="logo" src="https://lucasmarandola.github.io/taiyoracingco/taiyo.png" alt="TAIYO Racing Company Logo">
+    </a>
+</footer>
+<script>
+function updateTime() {
+    const now = new Date();
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+
+    document.getElementById('hours').textContent = hours;
+    document.getElementById('minutes').textContent = minutes;
+}
+setInterval(updateTime, 1000);
+updateTime(); 
+</script>
+</body>
+</html>
+
+

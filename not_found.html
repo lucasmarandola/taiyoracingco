@@ -2,11 +2,11 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>太陽 TAIYO RACING COMPANY - 404</title>
+	<title>太陽 TAIYO RACING COMPANY - 404 NOT FOUND</title>
 	<style>
 	      @font-face {
            font-family: 'Swis721 Ex BT';
-           src: url('https://taiyoracingcompany.neocities.org/fonts/swisse.ttf') format('truetype');
+           src: url('https://lucasmarandola.github.io/taiyoracingco/fonts/swisse.ttf') format('truetype');
            font-weight: normal;
            font-style: normal;
         }
@@ -15,7 +15,7 @@
             margin: 0;
             padding: 0;
             font-family: Swis721 Ex BT, sans-serif;
-            background-color: yellow;
+            background-color: white;
             text-align: justify;
         }
         .container {
@@ -38,7 +38,7 @@
         }
         .back-to-top-container a {
             display: inline-block;
-            color: yellow;
+            color: white;
             background-color: black;
             padding: 10px;
             text-decoration: none;
@@ -68,24 +68,58 @@
         .center-text {
             text-align: center;
         }
+        
+        img {
+            max-width: 50%;
+            max-height: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
     </style>
 	
 </head>
 <body>
     <div class="container">
         <div class="logo-container" style="height: 100%">
-            <img src="https://taiyoracingcompany.neocities.org/taiyo.png" alt="TAIYO RACING COMPANY">
+            <img src="https://lucasmarandola.github.io/taiyoracingco/taiyo.png" alt="TAIYO RACING COMPANY">
         </div>
     
 <div class="center-text">
-        I don't know how you found this but you are probably on the wrong place.
+        404 NOT FOUND
     </div>
+    <img src="https://lucasmarandola.github.io/taiyoracingco/goodies/spin/duck.gif" alt="Duck Gif">
 
 
     <div class="back-to-top-container">
-        <a href="https://taiyoracingcompany.neocities.org/home">Back to Top</a>
+        <a href="https://lucasmarandola.github.io/taiyoracingco/home">Back to Top</a>
     </div>
 </div>
+
+<audio id="backgroundMusic" loop>
+        <source src="https://lucasmarandola.github.io/taiyoracingco/goodies/spin/coming.mp3" type="audio/mpeg">
+        Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <script>
+        var audioPlayed = false;
+
+        function playAudio() {
+            if (!audioPlayed) {
+                var audio = document.getElementById('backgroundMusic');
+                audio.play();
+                audioPlayed = true; // Aseguramos que se reproduzca solo una vez
+            }
+        }
+
+        // Detectar el movimiento del mouse
+        window.addEventListener('mousemove', playAudio);
+
+        // Detectar el primer toque en dispositivos móviles
+        window.addEventListener('touchstart', playAudio);
+    </script>
 
 </body>
 </html>
